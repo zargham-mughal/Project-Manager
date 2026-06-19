@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOrg(orgId) {
+      return isAuthenticated() && request.auth.uid == orgId;
+    }
+
+    // users collection: org can read/write users they created, users can read/write their own doc
+    match /users/{userId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // organizations/{orgId} = org's own uid
+    match /organizations/{orgId} {
+
+      match /projects/{projectId} {
+        allow read, write: if isOrg(orgId);
+
+        match /sprints/{sprintId} {
+          allow read, write: if isOrg(orgId);
+
+          match /tasks/{taskId} {
+            // Org has full access
+            allow read, write: if isOrg(orgId);
+            // Assigned user can read their own task and update status/actualHours
+            allow read: if isAuthenticated() && resource.data.assignedTo.uid == request.auth.uid;
+            allow update: if isAuthenticated()
+              && resource.data.assignedTo.uid == request.auth.uid
+              && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'actualHours', 'clockedInAt']);
+          }
+        }
+      }
+    }
+  }
+}

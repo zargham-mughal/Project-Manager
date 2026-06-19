@@ -1,0 +1,192 @@
+/* SprintDetail.css */
+
+.sprint-accordion {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.sprint-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  cursor: pointer;
+  background: var(--surface);
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: background 0.12s;
+  gap: 12px;
+}
+.sprint-accordion-header:hover { background: var(--surface-alt); }
+
+.sprint-accordion-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.sprint-chevron {
+  font-size: 12px;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.sprint-chevron.open { transform: rotate(90deg); }
+
+.sprint-name { font-size: 15px; font-weight: 600; }
+.sprint-dates { color: var(--text-muted); font-size: 13px; }
+
+.sprint-accordion-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.sprint-accordion-body {
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  padding: 16px 18px;
+}
+
+/* Task accordion inside sprint */
+.task-accordion {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.task-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px;
+  cursor: pointer;
+  background: var(--surface);
+  border: none;
+  width: 100%;
+  text-align: left;
+  gap: 12px;
+  transition: background 0.12s;
+}
+.task-accordion-header:hover { background: var(--surface-alt); }
+
+.task-accordion-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+.task-chevron {
+  font-size: 11px;
+  color: var(--text-subtle);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.task-chevron.open { transform: rotate(90deg); }
+
+.task-accordion-title { font-weight: 600; font-size: 14px; }
+
+.task-accordion-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.task-accordion-body {
+  border-top: 1px solid var(--border);
+  padding: 14px;
+  background: var(--surface-alt);
+}
+
+.task-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.task-detail-item label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-subtle);
+  display: block;
+  margin-bottom: 4px;
+}
+.task-detail-item span {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.hours-cost-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sprint-stats-bar {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+.sprint-stat { font-size: 13px; color: var(--text-muted); }
+.sprint-stat strong { color: var(--text); font-weight: 700; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sprint-accordion-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+  .sprint-accordion-right {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .sprint-accordion-body { padding: 12px 14px; }
+
+  .task-accordion-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+  .task-accordion-right {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .task-accordion-body { padding: 12px; }
+  .task-detail-grid { grid-template-columns: 1fr 1fr; }
+
+  .sprint-stats-bar { gap: 10px; }
+  .sprint-stat { font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .task-detail-grid { grid-template-columns: 1fr; }
+  .sprint-name { font-size: 14px; }
+  .sprint-dates { font-size: 12px; }
+  .hours-cost-chip { font-size: 11px; padding: 2px 8px; }
+}

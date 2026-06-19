@@ -1,0 +1,25 @@
+/* CreateUser.css */
+
+.create-user-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 820px) {
+  .create-user-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .create-user-layout { gap: 16px; }
+}
+
+.rate-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-subtle);
+  margin-top: 4px;
+}
