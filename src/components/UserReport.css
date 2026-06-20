@@ -53,6 +53,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .user-report-card {
@@ -76,14 +77,19 @@
 /* Responsive */
 @media (max-width: 768px) {
   .report-section-header {
-    font-size: 16px;
-    flex-wrap: wrap;
+    font-size: 15px;
     gap: 8px;
+    margin: 20px 0 12px;
+    padding-bottom: 8px;
   }
   .user-select-row { gap: 8px; }
   .user-pill { font-size: 12px; padding: 5px 10px 5px 5px; }
+  .user-report-card { padding: 14px; }
+  .hours-summary { gap: 12px; }
+  .hours-item { font-size: 12px; }
 }
 
 @media (max-width: 480px) {
   .report-section-header { font-size: 14px; }
+  .user-report-card { padding: 12px; }
 }

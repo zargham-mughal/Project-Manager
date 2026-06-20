@@ -64,7 +64,8 @@ const BoardTaskCard = ({ t, orgId, projectId, sprintId, onRefresh, isOrg }) => {
     const taskRef = doc(db, 'organizations', orgId, 'projects', projectId, 'sprints', sprintId, 'tasks', t.id);
 
     const handleClockIn = async () => {
-        await updateDoc(taskRef, { clockedInAt: new Date().toISOString() });
+        await updateDoc(taskRef, { clockedInAt: new Date().toISOString(), status: 'in-progress' });
+        await syncSprintStatus(orgId, projectId, sprintId);
         if (onRefresh) onRefresh();
     };
     const handleClockOut = async () => {

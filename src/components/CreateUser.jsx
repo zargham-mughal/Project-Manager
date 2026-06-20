@@ -185,7 +185,8 @@ const CreateUser = () => {
                                 />
                             </div>
                         </div>
-                        <div className="table-wrap">
+                        {/* Desktop table */}
+                        <div className="table-wrap team-table-desktop">
                             <table className="table">
                                 <thead>
                                     <tr>
@@ -229,6 +230,35 @@ const CreateUser = () => {
                                     ))}
                                 </tbody>
                             </table>
+                        </div>
+
+                        {/* Mobile cards */}
+                        <div className="team-cards-mobile">
+                            {filteredUsers.map(u => (
+                                <div key={u.id} className="team-member-card">
+                                    <div className="team-member-card-header">
+                                        <span className="assignee">
+                                            <Avatar name={u.name} email={u.email} />
+                                            <span>
+                                                <span className="name" style={{ fontWeight: 600, display: 'block' }}>{u.name || 'N/A'}</span>
+                                                <span className="text-muted text-sm">{u.email}</span>
+                                            </span>
+                                        </span>
+                                        <button
+                                            className="btn btn-ghost btn-sm"
+                                            style={{ color: 'var(--danger, #de350b)' }}
+                                            onClick={() => setConfirmDelete({ id: u.id, name: u.name || u.email })}
+                                        >
+                                            🗑
+                                        </button>
+                                    </div>
+                                    <div className="team-member-card-details">
+                                        <div><span className="text-muted">Rate:</span> ${u.hourlyRate || 0}/hr</div>
+                                        <div><span className="text-muted">Schedule:</span> {u.startTime && u.endTime ? `${u.startTime} – ${u.endTime}` : `${u.shiftHours || 8}h/day`}</div>
+                                        <div><span className="text-muted">Joined:</span> {u.createdAt?.toDate ? u.createdAt.toDate().toLocaleDateString() : 'N/A'}</div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                         </>
                     )}

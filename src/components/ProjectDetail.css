@@ -1,3 +1,7 @@
 /* ProjectDetail.css */
 
 .sprint-list { display: flex; flex-direction: column; gap: 0; }
+
+@media (max-width: 768px) {
+  .sprint-list { gap: 0; }
+}

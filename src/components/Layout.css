@@ -194,9 +194,12 @@
    Responsive — Tablet (≤ 900px)
    ============================================================ */
 @media (max-width: 900px) {
+  .sidebar { width: 220px; }
   .topbar { padding: 0 16px; }
   .content { padding: 20px 16px; }
   .page-title { font-size: 20px; }
+  .sidebar-brand { padding: 16px 16px 12px; font-size: 16px; }
+  .nav-item { padding: 8px 10px; font-size: 13px; }
 }
 
 /* ============================================================
@@ -209,6 +212,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    width: 260px;
     height: 100vh;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
@@ -222,8 +226,38 @@
   }
 
   .topbar { padding: 0 12px; height: 50px; }
-  .content { padding: 16px 12px; }
+  .topbar .crumbs { font-size: 12px; gap: 5px; }
 
-  .page-header { flex-direction: column; gap: 12px; }
+  .content { padding: 14px 12px; }
+
+  .page-header { flex-direction: column; gap: 10px; }
   .page-title { font-size: 18px; }
+  .page-subtitle { font-size: 12px; }
+}
+
+/* ============================================================
+   Responsive — Small Mobile (≤ 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  .sidebar { width: 240px; }
+  .sidebar-brand { padding: 14px 14px 10px; font-size: 15px; }
+  .sidebar-brand .logo-mark { width: 26px; height: 26px; font-size: 14px; }
+  .nav { padding: 6px 8px; }
+  .nav-item { padding: 8px 10px; font-size: 13px; gap: 9px; }
+  .nav-section { padding: 10px 10px 4px; font-size: 10px; }
+  .sidebar-footer { padding: 10px; }
+  .sidebar-user .meta .name { font-size: 12px; }
+
+  .topbar { height: 46px; }
+  .topbar .crumbs { font-size: 11px; }
+
+  .content { padding: 12px 10px; }
+
+  .page-title { font-size: 16px; }
+  .page-subtitle { font-size: 11px; }
+
+  .theme-toggle { padding: 3px 8px; font-size: 12px; }
+  .toggle-track { width: 32px; height: 18px; }
+  .toggle-knob { width: 14px; height: 14px; top: 2px; left: 2px; }
+  .toggle-track.on .toggle-knob { transform: translateX(14px); }
 }

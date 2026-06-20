@@ -741,14 +741,24 @@ p { margin: 0; }
    Responsive — Tablet (≤ 900px)
    ============================================================ */
 @media (max-width: 900px) {
+  .board { grid-template-columns: 1fr; }
+
   .stat-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
   .stat-value { font-size: 22px; }
+
   .chart-card { padding: 14px; }
+
   .filter-bar { flex-direction: column; gap: 12px; }
   .filter-group { min-width: 0 !important; width: 100%; }
   .searchable-select { max-width: 100% !important; }
+
   .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .table { min-width: 600px; }
+
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
+
+  .task-meta { flex-wrap: wrap; }
 }
 
 /* ============================================================
@@ -760,8 +770,6 @@ p { margin: 0; }
   .stat-value { font-size: 20px; }
   .stat-label { font-size: 12px; }
 
-  .grid-2, .grid-3 { grid-template-columns: 1fr; }
-
   .tile { padding: 14px 16px; }
   .tile h3 { font-size: 15px; }
 
@@ -771,6 +779,7 @@ p { margin: 0; }
   .btn { padding: 7px 14px; font-size: 13px; }
   .btn-sm { padding: 4px 10px; font-size: 12px; }
 
+  .auth-page { padding: 16px; }
   .auth-card { padding: 24px 20px; }
   .auth-title { font-size: 20px; }
 
@@ -780,6 +789,27 @@ p { margin: 0; }
   .empty .empty-icon { font-size: 28px; }
 
   .row-between { flex-wrap: wrap; }
+
+  .task-card { padding: 10px 12px; }
+  .task-card .task-title { font-size: 13px; }
+  .task-card .task-desc { font-size: 12px; }
+  .task-meta { font-size: 11px; gap: 6px; }
+
+  .board-col { padding: 10px; min-height: 80px; }
+  .board-col-header { font-size: 11px; padding: 4px 4px 10px; }
+  .board-col-body { gap: 8px; }
+  .board-col-empty { font-size: 12px; padding: 14px 6px; }
+
+  .chart-card { padding: 12px; }
+
+  .searchable-select-dropdown { max-height: 220px; }
+
+  .select-inline { font-size: 12px; padding: 4px 6px; }
+  .input-inline { width: 65px; font-size: 12px; padding: 4px 6px; }
+
+  .badge { font-size: 10px; padding: 2px 8px; }
+
+  .task-chip { font-size: 11px; padding: 2px 6px; }
 }
 
 /* ============================================================
@@ -787,18 +817,31 @@ p { margin: 0; }
    ============================================================ */
 @media (max-width: 480px) {
   .stat-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .stat-card { padding: 12px; }
-  .stat-value { font-size: 18px; }
+  .stat-card { padding: 10px; }
+  .stat-value { font-size: 16px; }
+  .stat-label { font-size: 11px; }
 
-  .board { grid-template-columns: 1fr; }
-  .board-col { min-height: 80px; }
-
-  .auth-page { padding: 12px; }
-  .auth-card { padding: 20px 16px; border-radius: var(--radius); }
+  .auth-page { padding: 10px; }
+  .auth-card { padding: 20px 14px; border-radius: var(--radius); }
   .auth-title { font-size: 18px; }
-  .auth-subtitle { font-size: 13px; }
+  .auth-subtitle { font-size: 12px; margin: 4px 0 18px; }
+  .auth-brand { font-size: 17px; }
 
   .input, .textarea, .select { padding: 8px 10px; font-size: 13px; }
 
-  .badge { font-size: 10px; padding: 2px 8px; }
+  .page-header { gap: 8px; }
+
+  .tile { padding: 12px; }
+  .tile h3 { font-size: 14px; }
+
+  .card-body { padding: 12px; }
+
+  .form-group { margin-bottom: 12px; }
+  .label { font-size: 12px; margin-bottom: 4px; }
+
+  .progress { height: 6px; }
+
+  .empty { padding: 24px 12px; }
+  .empty .empty-icon { font-size: 24px; }
+  .empty .empty-title { font-size: 14px; }
 }

@@ -77,8 +77,9 @@ const TaskList = () => {
     };
 
     const handleClockIn = async (task) => {
-        await updateDoc(getTaskRef(task), { clockedInAt: new Date().toISOString() });
-        setTasks(prev => prev.map(t => t.id === task.id ? { ...t, clockedInAt: new Date().toISOString() } : t));
+        await updateDoc(getTaskRef(task), { clockedInAt: new Date().toISOString(), status: 'in-progress' });
+        await syncSprintStatus(orgId, task.projectId, task.sprintId);
+        setTasks(prev => prev.map(t => t.id === task.id ? { ...t, clockedInAt: new Date().toISOString(), status: 'in-progress' } : t));
     };
 
     const handleClockOut = async (task) => {

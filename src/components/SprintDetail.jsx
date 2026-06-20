@@ -116,7 +116,8 @@ const TaskAccordion = ({ task, tasksRef, onRefresh, onDelete, onEdit, userRateMa
 
     const handleClockIn = async (e) => {
         e.stopPropagation();
-        await updateDoc(doc(tasksRef, task.id), { clockedInAt: new Date().toISOString() });
+        await updateDoc(doc(tasksRef, task.id), { clockedInAt: new Date().toISOString(), status: 'in-progress' });
+        await syncSprintStatus(orgUid, projectId, tasksRef.parent.id);
         onRefresh();
     };
 

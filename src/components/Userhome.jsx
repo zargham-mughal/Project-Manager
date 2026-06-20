@@ -53,7 +53,8 @@ const UserHome = () => {
     };
 
     const handleClockIn = async (task) => {
-        await updateDoc(getTaskRef(task), { clockedInAt: new Date().toISOString() });
+        await updateDoc(getTaskRef(task), { clockedInAt: new Date().toISOString(), status: 'in-progress' });
+        await syncSprintStatus(orgId, task.projectId, task.sprintId);
         loadData();
     };
 
@@ -176,6 +177,8 @@ const UserHome = () => {
                         const sprintInfo = sprints.find(s => s.id === group.sprintId);
                         const isOpen = openSprintId === group.sprintId;
                         const groupDone = group.tasks.filter(t => t.status === 'done').length;
+                        const anyStarted = group.tasks.some(t => t.status === 'in-progress' || t.status === 'done');
+                        const computedStatus = group.tasks.length > 0 && groupDone === group.tasks.length ? 'completed' : anyStarted ? 'active' : 'planned';
                         const pct = group.tasks.length > 0 ? (groupDone / group.tasks.length) * 100 : 0;
 
                         return (
@@ -195,7 +198,7 @@ const UserHome = () => {
                                             </div>
                                             <span className="text-sm text-muted">{pct.toFixed(0)}%</span>
                                         </div>
-                                        {sprintInfo && <StatusBadge status={sprintInfo.status} />}
+                                        <StatusBadge status={computedStatus} />
                                         <span className="task-chip">{group.tasks.length} tasks · {groupDone} done</span>
                                     </div>
                                 </button>
